@@ -11,7 +11,7 @@ class m150419_125742_create_users_table extends Migration
             'id' => 'pk',
             'username' => 'string(20) NOT NULL',
             'password' => 'string(255) NOT NULL',
-            'auth_key'  => 'string(255) NOT NULL',
+            'auth_key' => 'string(255)',
         ])->execute();
 
         // usernameをuniqueに
@@ -21,8 +21,6 @@ class m150419_125742_create_users_table extends Migration
     public function down()
     {
         $this->db->createCommand()->dropTable('users')->execute();
-        
-        return false;
     }
     
     /*
