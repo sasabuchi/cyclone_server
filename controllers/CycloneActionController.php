@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\controllers\CLogger;
 use yii\db\Query;
 use app\models\CycloneAction;
 use yii\data\ActiveDataProvider;
@@ -18,7 +19,7 @@ class CycloneActionController extends Controller
 {
     public $enableCsrfValidation = false;
 
-    const ORDER_UPLOAD_DATE = 1;
+    const ORDER_UPLOAD_DATE = 0;
     const ORDER_NUMBER_OF_PLAYS = 1;
 
     public function behaviors()
@@ -41,6 +42,24 @@ class CycloneActionController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+/*
+            'corsFilter' => [
+              'class' => \yii\filters\Cors::className(),
+              'cors' => [
+                // restrict access to
+                'Origin' => ['*'],
+                'Access-Control-Request-Method' => ['POST', 'PUT', 'HEAD', 'OPTIONS'],
+                // Allow only POST and PUT methods
+                'Access-Control-Request-Headers' => ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
+                // Allow only headers 'X-Wsse'
+                'Access-Control-Allow-Credentials' => true,
+                // Allow OPTIONS caching
+                //'Access-Control-Max-Age' => 3600,
+                // Allow the X-Pagination-Current-Page header to be exposed to the browser.
+                //'Access-Control-Expose-Headers' => ['X-Pagination-Current-Page'],
+              ],
+            ],
+            */
         ];
     }
 
@@ -123,26 +142,44 @@ class CycloneActionController extends Controller
 
     public function actionApicount()
     {
-        $query = new Query;
+        $params = $_POST;
+        $filter = array();
 
-        if(isset($filter['from']))
+        $query = new Query;
+ 
+        if(isset($params['dateFilter']))
         {
-          $query->andWhere("create_date >= '".$filter['from']."' ");
+          $dateFilter=(array)json_decode($params['dateFilter']);
+        }
+
+        if(isset($dateFilter['from']))
+        {
+          $query->andWhere("create_date >= '".$dateFilter['from']."' ");
         }
            
-        if(isset($datefilter['to']))
+        if(isset($dateFilter['to']))
         {
-          $query->andWhere("created_date <= '".$datefilter['to']."'");
+          $query->andWhere("create_date <= '".$dateFilter['to']."'");
+        }
+
+        if(isset($params['ids']))
+        {
+          $query->andWhere("cyclone_action_id IN (".$params['ids'].")");
+        } else {
+          $query->andFilterWhere(['like', 'shown', 1]);
         }
 
         $query
           ->from('dtb_cyclone_action')
         //->andFilterWhere(['like', 'cyclone_action_id', $filter['cyclone_action_id']])
         //->andFilterWhere(['like', 'name', $filter['name']])
-          ->andFilterWhere(['like', 'shown', 1])
+          //->andFilterWhere(['like', 'shown', 1])
           ->select("cyclone_action_id, name, action_data_path, movie_url, create_date, update_date");
            
+
         $totalItems = $query->count();
+        Yii::trace($totalItems);
+        
         $this->setHeader(200);
  
         echo json_encode(array("count"=>$totalItems), JSON_PRETTY_PRINT);
@@ -153,15 +190,15 @@ class CycloneActionController extends Controller
     {
         $params = $_POST;
         $filter = array();
-        $sort = "";
+        $sort = "cyclone_action_id desc";
         $page=0;
         $limit=10;
-        
+
         if(isset($params['page']))
           $page=$params['page'];
  
         if(isset($params['limit']))
-              $limit=$params['limit'];
+          $limit=$params['limit'];
  
         $offset=$limit * $page;
 
@@ -170,47 +207,56 @@ class CycloneActionController extends Controller
         {
           $filter=(array)json_decode($params['filter']);
         }
+
+        $query = new Query;
  
-        if(isset($params['datefilter']))
+        if(isset($params['dateFilter']))
         {
-          $datefilter=(array)json_decode($params['datefilter']);
+          $dateFilter=(array)json_decode($params['dateFilter']);
+        }
+
+        if(isset($dateFilter['from']))
+        {
+          $query->andWhere("create_date >= '".$dateFilter['from']."' ");
+        }
+           
+        if(isset($dateFilter['to']))
+        {
+          $query->andWhere("create_date <= '".$dateFilter['to']."'");
+        }
+
+        if(isset($params['ids']))
+        {
+          $query->andWhere("cyclone_action_id IN (".$params['ids'].")");
+        } else {
+          $query->andFilterWhere(['like', 'shown', 1]);
         }
  
         if(isset($params['order']))
         {
-          if ($params['order'] == ORDER_UPLOAD_DATE) {
+          if ($params['order'] == self::ORDER_UPLOAD_DATE) {
             $sort = "update_date desc";
-          } else if ($params['order'] == ORDER_NUMBER_OF_PLAYS) {
+          } else if ($params['order'] == self::ORDER_NUMBER_OF_PLAYS) {
             $sort = "play_count desc";
           }
         }
         
-        $query = new Query;
         $query->offset($offset)
           ->limit($limit)
           ->from('dtb_cyclone_action')
         //->andFilterWhere(['like', 'cyclone_action_id', $filter['cyclone_action_id']])
         //->andFilterWhere(['like', 'name', $filter['name']])
-          ->andFilterWhere(['like', 'shown', 1])
+          //->andFilterWhere(['like', 'shown', 1])
           ->orderBy($sort)
-          ->select("cyclone_action_id, name, genre_id, play_count, action_data_path, movie_url, create_date, update_date");
+          ->select("cyclone_action_id, name, genre_id, device_id, author, play_count, action_data_path, movie_url, create_date, update_date");
  
-        if(isset($filter['from']))
-        {
-          $query->andWhere("create_date >= '".$filter['from']."' ");
-        }
-           
-        if(isset($datefilter['to']))
-        {
-          $query->andWhere("created_date <= '".$datefilter['to']."'");
-        }
-           
         $command = $query->createCommand();
         $models = $command->queryAll();
 
         $totalItems=$query->count();
         $this->setHeader(200);
- 
+ //Yii::trace($models);
+        
         echo json_encode($models,JSON_PRETTY_PRINT);
     }
 
@@ -218,6 +264,8 @@ class CycloneActionController extends Controller
     {
         $params = $_POST;
         
+        //Yii::info($_POST);
+
         $query = new Query;
         $query->from('dtb_cyclone_action')
         ->andFilterWhere(['like', 'cyclone_action_id', $params['cyclone_action_id']])
@@ -237,6 +285,11 @@ class CycloneActionController extends Controller
           $move["torque"] = $data[2];
           $moves[] = $move;
         }
+
+        // play_count+1
+        $action = $this->findModel($model['cyclone_action_id']);
+        $action->play_count = $action->play_count + 1; 
+        $action->save();
 
         $this->setHeader(200);
  
@@ -259,7 +312,6 @@ class CycloneActionController extends Controller
         $model = new CycloneAction();
         $model->attributes = $params;
 
-        print_r($params);
         $nowDate = date("Y-m-d H:i:s");
         $model->action_data_path =  Yii::$app->params['csvDir'] . date("Ymd_His") . '.csv';
 

@@ -29,6 +29,8 @@ class m150506_075032_create_dtb_cyclone_action extends Migration
             'movie_url' => 'string(255) NOT NULL',
             'play_count'  => 'integer NOT NULL DEFAULT 0',
             'genre_id'  => 'integer',
+            'device_id'  => 'string(50) NOT NULL',
+            'author'  => 'string(50) NOT NULL',
             'create_date' => 'datetime NOT NULL',
             'update_date' => 'datetime NOT NULL',
             'shown'  => 'integer(5) NOT NULL DEFAULT 0',

@@ -22,6 +22,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'genre_id')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'device_id')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'create_date')->textInput() ?>
 
     <?= $form->field($model, 'update_date')->textInput() ?>

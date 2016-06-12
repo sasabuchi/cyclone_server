@@ -33,6 +33,7 @@ class CycloneAction extends \yii\db\ActiveRecord
             [['name', 'action_data_path', 'movie_url', 'create_date', 'update_date'], 'required'],
             [['create_date', 'update_date'], 'safe'],
             [['name', 'action_data_path', 'movie_url'], 'string', 'max' => 255],
+            [['author', 'device_id'], 'string', 'max' => 100],
             [['shown', 'play_count', 'genre_id'], 'integer']
         ];
     }
@@ -49,6 +50,8 @@ class CycloneAction extends \yii\db\ActiveRecord
             'movie_url' => 'Movie Url',
             'play_count' => 'Play Count',
             'genre_id' => 'Genre ID',
+            'device_id' => 'Device ID',
+            'author' => 'Author name',
             'create_date' => 'Create Date',
             'update_date' => 'Update Date',
             'shown' => 'shown flg'

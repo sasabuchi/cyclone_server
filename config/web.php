@@ -29,11 +29,19 @@ $config = [
             'useFileTransport' => true,
         ],
         'log' => [
+            // //'class'=>'CLogRouter',
+            // 'routes'=>array(
+            //     array(
+            //         'class'=>'CFileLogRoute',
+            //         'levels'=>'trace, info, error, warning',
+            //         'categories'=>'system.*',
+            //     ),
+            // ),
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['trace', 'info', 'error', 'warning'],
                 ],
             ],
         ],
@@ -55,6 +63,10 @@ $config = [
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     //$config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+         'class' => 'yii\debug\Module',
+         'allowedIPs' => ['*'] // '*'ですべてのIPからのアクセスでも動作するようにできる
+ ];
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         'allowedIPs' => ['*'],

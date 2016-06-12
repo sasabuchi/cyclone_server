@@ -34,6 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'movie_url:url',
             'play_count',
             'genre_id',
+            'device_id',
+            'author',
             'create_date',
             'update_date',
             'shown'
