@@ -15,6 +15,7 @@ extensions
 
 assets/*
 !assets/.gitignore
+!assets/AppAsset.php
 runtime/*
 !protected/runtime/.gitignore
 !protected/data/*.db
