@@ -26,13 +26,14 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+                'brandLabel' => 'X-CYCLONE',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
-            $navBar = [
+            if (!Yii::$app->user->isGuest) {
+                $navBar = [
                     ['label' => 'Home', 'url' => ['/site/index']],
                     ['label' => 'About', 'url' => ['/site/about']],
                     ['label' => 'Contact', 'url' => ['/site/contact']],
@@ -42,12 +43,14 @@ AppAsset::register($this);
                             'url' => ['/site/logout'],
                             'linkOptions' => ['data-method' => 'post']],
                 ];
-            if (!Yii::$app->user->isGuest) {
+            
                 $navBar = array_merge($navBar, [
                     ['label' => 'CycloneAction',
                             'url' => ['/cyclone-action'],
                             'linkOptions' => ['data-method' => 'post']],
                     ]);
+            } else {
+                $navBar = [];
             }
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
@@ -66,8 +69,9 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-            <p class="pull-right"><?= Yii::powered() ?></p>
+            <p class="pull-left">&copy; 牛茶はちみつ <?= date('Y') ?></p>
+            <p class="pull-right"></p>
+            <!--<p class="pull-right"><?= Yii::powered() ?></p>-->
         </div>
     </footer>
 

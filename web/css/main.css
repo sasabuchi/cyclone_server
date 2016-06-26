@@ -1,0 +1,21 @@
+p.resizeimage img { 
+    width: 100%; 
+    height:auto;
+    vertical-align:bottom;
+}
+
+.header {
+    text-align: center;
+    background-color: transparent;
+}
+
+.header .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.samples img {
+    width: 25%;
+    margin: 5pt;
+}
+
