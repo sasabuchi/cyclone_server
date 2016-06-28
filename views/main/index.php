@@ -15,7 +15,7 @@ $this->title = 'X-CYCLONE Android';
         </p>
         
 
-        <p><a class="btn btn-lg btn-success" href="apk/cyclone_0.1.0.apk">アプリをインストール</a></p>
+        <p><a class="btn btn-lg btn-success" href="apk/cyclone_0.2.apk">アプリをインストール</a></p>
     </div>
 
     <div class="body-content">
@@ -35,7 +35,7 @@ $this->title = 'X-CYCLONE Android';
                 </p>
                 <p>アプリにXVIDEOSの動画画面のURLを入力することで、その動画のサイクロンデータを自作することができます。作成したサイクロンデータは投稿され、「My履歴」から再生可能です。サイクロンデータを作成して、みんなでシェアしましょう。</p>
 
-                <p><a class="btn btn-default" href="apk/cyclone_0.1.0.apk">アプリをインストール &raquo;</a></p>
+                <p><a class="btn btn-default" href="apk/cyclone_0.2.apk">アプリをインストール &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>アプリ画面</h2>
@@ -46,15 +46,18 @@ $this->title = 'X-CYCLONE Android';
                     <img title="sample2" src="image/cyclone_sample03.jpg">
                     <img title="sample2" src="image/cyclone_sample04.jpg">
                 </div>
-                <p><a class="btn btn-default" href="apk/cyclone_0.1.0.apk">アプリをインストール &raquo;</a></p>
+                <p><a class="btn btn-default" href="apk/cyclone_0.2.apk">アプリをインストール &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h3>履歴</h3>
-
+                <p>2016/6/30 X-CYCLONE Androidアプリ ver.0.2 公開</p>
+                <ul>
+                    <li>XVIDEOSの新規動画タイプに対応</li>
+                </ul>
                 <p>2016/6/27 X-CYCLONE Androidアプリ ver.0.1 公開</p>
             </div>
             <div class="col-lg-4">
-                <h4>その他</h4>
+                <h4>※</h4>
 
                 <p>A10サイクロンSAは、株式会社 Rends社 VORZEのコードレス電動オナホールです。 <a href="http://www.vorze.jp/page_a10cyclonesa.html">A10サイクロンSA</a></p>
                 <p>XVIDEOSは世界最大のアダルト動画共有サービスです。<a href="http://www.xvideos.com">XVIDEOS</a></p>

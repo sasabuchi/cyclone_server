@@ -55,8 +55,10 @@ class UpdatemovieController extends Controller
         	
         	$hrefPosition = strpos($html, "href=\"http://content.xvideos.com/videos/");
           $imIndex = strpos($html, "href=\"http://porn.im");
+          $video2Index = strpos($html, "href=\"http://videos2");
+          $video3Index = strpos($html, "href=\"http://videos3");
 
-        	if ($hrefPosition !== false || $imIndex !== false) {
+        	if ($hrefPosition !== false || $imIndex !== false || $video2Index !== false || $video3Index !== false) {
         		/*
         		$startHtml = substr($html, $hrefPosition);
         		$endPosition = strpos($startHtml, "\"");
