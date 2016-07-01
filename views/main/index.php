@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = 'X-CYCLONE Android';
+$this->title = 'XVIDEOS × A10サイクロンSA アプリ';
 ?>
 <div class="site-index">
 
@@ -26,14 +26,14 @@ $this->title = 'X-CYCLONE Android';
                 <p class="resizeimage">
                     <img title="how_play" style="width: 80%;" src="image/how_play.png">
                 </p>
-                <p>みんなが投稿したCYCLONEプレイデータのあるXVIDEOSの動画一覧が表示されます。A10サイクロンSAの電源を入れて、好きな動画を選べば、A10サイクロンSAが動画に合わせて回転します。</p>
+                <p>みんなが投稿したサイクロンプレイデータのあるXVIDEOSの動画一覧が表示されます。A10サイクロンSAの電源を入れて、好きな動画を選べば、A10サイクロンSAが動画に合わせて回転します。</p>
             </div>
             <div class="col-lg-4">
                 <h2>自分のサイクロンデータが作れる！</h2>
                 <p class="resizeimage">
                     <img title="how_create" style="width: 80%;" src="image/how_create.png">
                 </p>
-                <p>アプリにXVIDEOSの動画画面のURLを入力することで、その動画のサイクロンデータを自作することができます。作成したサイクロンデータは投稿され、「My履歴」から再生可能です。サイクロンデータを作成して、みんなでシェアしましょう。</p>
+                <p>アプリにXVIDEOSの動画画面のURLを入力することで、その動画のサイクロンプレイデータを自作することができます。作成したサイクロンデータは投稿され、「My履歴」から再生可能です。みんなでシェアしたデータを再生してエンジョイしましょう。</p>
 
                 <p><a class="btn btn-default" href="apk/cyclone_0.2.apk">アプリをインストール &raquo;</a></p>
             </div>
@@ -59,8 +59,8 @@ $this->title = 'X-CYCLONE Android';
             <div class="col-lg-4">
                 <h4>※</h4>
 
-                <p>A10サイクロンSAは、株式会社 Rends社 VORZEのコードレス電動オナホールです。 <a href="http://www.vorze.jp/page_a10cyclonesa.html">A10サイクロンSA</a></p>
-                <p>XVIDEOSは世界最大のアダルト動画共有サービスです。<a href="http://www.xvideos.com">XVIDEOS</a></p>
+                <p>A10サイクロンSAは、株式会社 Rends社 VORZEのコードレス電動オナホールです。 <a href="http://www.vorze.jp/page_a10cyclonesa.html" TARGET="_blank">A10サイクロンSA</a></p>
+                <p>XVIDEOSは世界最大のアダルト動画共有サービスです。<a href="http://www.xvideos.com" TARGET="_blank">XVIDEOS</a></p>
             </div>
         </div>
 
