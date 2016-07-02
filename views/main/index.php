@@ -1,6 +1,7 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = 'XVIDEOS × A10サイクロンSA アプリ';
+$this->title = 'XVIDEOS × 電動オナホA10サイクロンSA 連携アプリ X-CYCLONE';
+$this->registerMetaTag(['name' => 'description', 'content' => 'XVIDEOS連携オナホールを実現する─────。X-CYCLONEはXVIDEOSの動画に対応した、電動オナホールA10サイクロンSAのプレイデータを再生、作成、シェアするAndroidアプリケーションです。'], 'description');
 ?>
 <div class="site-index">
 
@@ -9,7 +10,7 @@ $this->title = 'XVIDEOS × A10サイクロンSA アプリ';
             <img title="x_cyclone_main" alt="helloworld" src="image/x_cyclone_main.png">
         </p>
         <h1>XVIDEOS × CYCLONE HOLE</h1>
-        <p class="lead">X-CYCLONEはXVIDEOSの動画に合わせてA10サイクロンSAを回転させるAndroidアプリケーションです。</p>
+        <p class="lead">XVIDEOS連携オナホールを実現する─────。X-CYCLONEはXVIDEOSの動画に対応した、電動オナホールA10サイクロンSAのプレイデータを再生、作成、シェアするAndroidアプリケーションです</p>
         <p class="resizeimage">
             <img title="x_cyclone_main" style="width: 80%;" src="image/x_cyclone_logo.png" >
         </p>
