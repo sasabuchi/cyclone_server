@@ -22,7 +22,9 @@ AppAsset::register($this);
 </head>
 <body>
 
-<?php $this->beginBody() ?>
+<?php $this->beginBody();
+if (strpos(Yii::$app->request->url,'movie/view') === false) {
+?>
     <div class="wrap">
         <?php
             NavBar::begin([
@@ -74,6 +76,13 @@ AppAsset::register($this);
             <!--<p class="pull-right"><?= Yii::powered() ?></p>-->
         </div>
     </footer>
+
+<?php } else { ?>
+    <?= Breadcrumbs::widget([
+        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]) ?>
+    <?= $content ?>
+<?php } ?>
 
 <?php $this->endBody() ?>
 </body>
