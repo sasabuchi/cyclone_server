@@ -315,6 +315,11 @@ class CycloneActionController extends Controller
         $nowDate = date("Y-m-d H:i:s");
         $model->action_data_path =  Yii::$app->params['csvDir'] . date("Ymd_His") . '.csv';
 
+        if (empty($params["author"]) && isset($params["device_id"])) {
+          $customer = Customer::find()->where(['device_id' => $params["device_id"]])->one();
+          $model->author = $customer->name;
+        }
+
         $fp = fopen($model->action_data_path, 'w');
 
         foreach (json_decode($params['actions'], true) as $data) {

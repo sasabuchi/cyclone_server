@@ -53,10 +53,14 @@ class CustomerController extends Controller
         }
 
         $model->attributes = $params;
-        $model->save();
 
-        $this->setHeader(400);
-        echo json_encode($model->attributes, JSON_PRETTY_PRINT);
+        if ($model->save()) {
+            $this->setHeader(200);
+            echo json_encode($model->attributes, JSON_PRETTY_PRINT);    
+        } else {
+            $this->setHeader(400);
+            echo json_encode(array('status'=>0,'error_code'=>400,'errors'=>$model->errors),JSON_PRETTY_PRINT);
+        }
     }
 
     public function actionApiget()
@@ -71,7 +75,7 @@ class CustomerController extends Controller
             echo json_encode(array('status'=>0,'error_code'=>400), JSON_PRETTY_PRINT);
         }
 
-        $this->setHeader(400);
+        $this->setHeader(200);
         echo json_encode($model->attributes, JSON_PRETTY_PRINT);
     }
 
@@ -84,5 +88,20 @@ class CustomerController extends Controller
       header($status_header);
       header('Content-type: ' . $content_type);
       header('X-Powered-By: ' . "Nintriva <nintriva.com>");
+    }
+
+    private function _getStatusCodeMessage($status)
+    {
+      $codes = Array(
+      200 => 'OK',
+      400 => 'Bad Request',
+      401 => 'Unauthorized',
+      402 => 'Payment Required',
+      403 => 'Forbidden',
+      404 => 'Not Found',
+      500 => 'Internal Server Error',
+      501 => 'Not Implemented',
+      );
+      return (isset($codes[$status])) ? $codes[$status] : '';
     }
 }
