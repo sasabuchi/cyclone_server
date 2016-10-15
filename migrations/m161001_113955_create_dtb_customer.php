@@ -12,8 +12,8 @@ class m161001_113955_create_dtb_customer extends Migration
             'device_id'  => 'string(255) NOT NULL UNIQUE',
             'name' => 'string(255) NOT NULL',
             'play_count' => 'integer NOT NULL DEFAULT 0',
-            'create_date' => 'datetime NOT NULL',
-            'update_date' => 'datetime NOT NULL',
+            'create_date' => 'datetime NOT NULL DEFAULT CURRENT_TIMESTAMP',
+            'update_date' => 'datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
             'del_flg' => 'integer(5) NOT NULL DEFAULT 0'
         ])->execute();
     }
